@@ -1,0 +1,279 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Initialize_Applications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:moio="clr-namespace:Microsoft.Office.Interop.Outlook;assembly=Microsoft.Office.Interop.Outlook" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="idictConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="olstmailEmailsList" Type="OutArgument(scg:List(snm:MailMessage))" />
+    <x:Property Name="ojobjJsonData" Type="OutArgument(njl:JObject)" />
+    <x:Property Name="odtAppmntDetails" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="odtTempDatatable" Type="OutArgument(sd:DataTable)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>873.3333333333334,2788</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Management.Automation</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>Microsoft.Office.Interop.Outlook</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="112">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Management.Automation</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>Microsoft.Office.Interop.Outlook</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections.Specialized</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="558,2723.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_9">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Object" Name="objManualFolder" />
+      <Variable x:TypeArguments="moio:Folders" Name="fldrOutlook" />
+      <Variable x:TypeArguments="moio:Application" Default="[new Microsoft.Office.Interop.Outlook.ApplicationClass]" Name="oappoutlook" />
+      <Variable x:TypeArguments="x:String" Name="strJsonData" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="496,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
+    <ui:LogMessage DisplayName="Log message (Get Mails)" sap:VirtualizedContainerService.HintSize="496,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[&quot;Retrieveing mails...&quot;]" />
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim dtTempTable As New DataTable&#xD;&#xA;dtTempTable.Columns.Add(&quot;Email Subject+DateTime&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Patient Name&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Mother Name&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Father Name&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Date of Birth&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Gender&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Street Address&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;City&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Postal Code&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Contact Code&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Email ID&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Social Security Number&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Medical Record Number&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Appointment Date&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Time Slot&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Hospital Name&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Doctor Name&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Department&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Payment Method&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Username&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Temporary Password&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Appointment Type&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Appointment Status&quot;, GetType(String))&#xD;&#xA;dtTempTable.Columns.Add(&quot;Status Change Datetime&quot;, GetType(String))&#xD;&#xA;&#xD;&#xA;'dtTempTable.Columns(&quot;Username&quot;).DefaultValue = &quot;Not alloted&quot;&#xD;&#xA;'dtTempTable.Columns(&quot;Temporary Password&quot;).DefaultValue = &quot;Not alloted&quot;&#xD;&#xA;dtDatatable = dtTempTable" DisplayName="Appointment Details Datatable " sap:VirtualizedContainerService.HintSize="496,165.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="dtDatatable">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="odtAppmntDetails" />
+        </OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim dtTempTable As New DataTable&#xA;dtTempTable.Columns.Add(&quot;Patient Name&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Mother Name&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Father Name&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Date of Birth&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Gender&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Street Address&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;City&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Postal Code&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Contact Code&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Email ID&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Social Security Number&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Medical Record Number&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Appointment Date&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Time Slot&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Hospital Name&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Doctor Name&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Department&quot;, GetType(String))&#xA;dtTempTable.Columns.Add(&quot;Payment Method&quot;, GetType(String))&#xA;dtDatatable = dtTempTable" DisplayName="Temp Details Datatable " sap:VirtualizedContainerService.HintSize="496,165.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+      <ui:InvokeCode.Arguments>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="dtDatatable">[odtTempDatatable]</OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <ui:RetryScope DisplayName="Retry Get Outlook Mail Messages from inbox" sap:VirtualizedContainerService.HintSize="496,478" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[Cint(idictConfig(&quot;RetryNumber&quot;))]">
+      <ui:RetryScope.ActivityBody>
+        <ActivityAction>
+          <TryCatch DisplayName="Try getting outlook mail messages" sap:VirtualizedContainerService.HintSize="438.6666666666667,299.3333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch.Try>
+              <ui:GetOutlookMailMessages Account="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Get Outlook Mail Messages" Filter="[idictConfig(&quot;EmailFilter2&quot;).ToString]" GetAttachements="False" sap:VirtualizedContainerService.HintSize="200,25.33333333333333" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="[idictConfig(&quot;MailFolder&quot;).ToString]" MarkAsRead="False" Messages="[olstmailEmailsList]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Top="[cint(idictConfig(&quot;TopEmail&quot;))]" />
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404.6666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Catch Get transaction item" sap:VirtualizedContainerService.HintSize="450,272" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message Get Outlook Mail Messages faulted" sap:VirtualizedContainerService.HintSize="388,96" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Fatal" Message="[&quot;Could not retrieve mail messages from outlook account. Exception message: &quot;+exception.Message]" />
+                    <Rethrow DisplayName="Rethrow Get Outlook Mails faulted" sap:VirtualizedContainerService.HintSize="388,25.333333333333332" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+                  </Sequence>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
+        </ActivityAction>
+      </ui:RetryScope.ActivityBody>
+      <ui:RetryScope.Condition>
+        <ActivityFunc x:TypeArguments="x:Boolean" />
+      </ui:RetryScope.Condition>
+    </ui:RetryScope>
+    <ui:LogMessage DisplayName="Log Count of Mails Retrieved" sap:VirtualizedContainerService.HintSize="488.6666666666667,96" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Successfully retrieved &quot; + olstmailEmailsList.Count.ToString + &quot; mails...&quot;]" />
+    <Sequence DisplayName="Sequence for Outlook mail folder" sap:VirtualizedContainerService.HintSize="496,576" sap2010:WorkflowViewState.IdRef="Sequence_11">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign DisplayName="Assign Outlook Folders" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="moio:Folders">[fldrOutlook]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="moio:Folders">[oappoutlook.Session.DefaultStore.GetRootFolder().Folders]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <TryCatch DisplayName="Try Catch for Manual Folder" sap:VirtualizedContainerService.HintSize="434,340" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <TryCatch.Try>
+          <Assign DisplayName="Assign- manual folder" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[objManualFolder]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Object">[fldrOutlook.Add("Manual",Type.Missing)]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </TryCatch.Try>
+        <TryCatch.Catches>
+          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,166.66666666666666" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ActivityAction x:TypeArguments="s:Exception">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
+              </ActivityAction.Argument>
+              <ui:LogMessage DisplayName="Log Message- folder already exist" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;Manual folder already exists&quot;]" />
+            </ActivityAction>
+          </Catch>
+        </TryCatch.Catches>
+      </TryCatch>
+    </Sequence>
+    <TryCatch DisplayName="Try Catch- read json file" sap:VirtualizedContainerService.HintSize="496,532" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <Sequence DisplayName="Sequence- for read json file" sap:VirtualizedContainerService.HintSize="450,292.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ReadTextFile File="{x:Null}" Content="[strJsonData]" DisplayName="Read Json file" FileName="[idictConfig(&quot;JSONFilePath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+          <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[ojobjJsonData]" JsonString="[strJsonData]" />
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454.6666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
+            </ActivityAction.Argument>
+            <Throw DisplayName="Throw sys exception for unable to deserialize json file" Exception="[new System.Exception(&quot;Unable to get Json file &quot;)]" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>
