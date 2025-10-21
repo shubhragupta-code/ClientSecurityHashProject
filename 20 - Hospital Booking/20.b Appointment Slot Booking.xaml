@@ -1,0 +1,879 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_20_b_Appointment_Slot_Booking" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:uca="clr-namespace:UiPath.Cryptography.Activities;assembly=UiPath.Cryptography.Activities" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugace="clr-namespace:UiPath.GSuite.Activities.Calendar.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugage="clr-namespace:UiPath.GSuite.Activities.Gmail.Enums;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail.Activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="idictConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="iodtAppmntDetails" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="iodictAppmntDetails" Type="InOutArgument(scg:Dictionary(x:String, x:String))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1412.6666666666667,5377.333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_20_b_Appointment_Slot_Booking_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.GSuite.Activities.Enums</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.GSuite.Contracts</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>UiPath.Cryptography</x:String>
+      <x:String>UiPath.Cryptography.Enums</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>UiPath.Cryptography.Activities</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+      <x:String>UiPath.GSuite.Activities.Gmail.Enums</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.GSuite</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.GSuite.Activities.Calendar.Enums</x:String>
+      <x:String>UiPath.GSuite.Calendar.Models</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="20b Appointment Slot Booking" sap:VirtualizedContainerService.HintSize="1422.6666666666667,5312.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strHospitalDeptFile" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtDoctorSheet" />
+      <Variable x:TypeArguments="x:Boolean" Name="boolSlotAvailability" />
+      <Variable x:TypeArguments="x:String" Name="strCellAddress" />
+      <Variable x:TypeArguments="x:String" Name="strDateColumnLetter" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="genvarCellValue" />
+      <Variable x:TypeArguments="x:Int32" Default="1" Name="intCount" />
+      <Variable x:TypeArguments="x:String" Name="strTimeSlotAddress" />
+      <Variable x:TypeArguments="s:DateTime" Name="dtimeEndDateTime" />
+      <Variable x:TypeArguments="s:DateTime" Name="dtimeStartDateTime" />
+      <Variable x:TypeArguments="x:Boolean" Name="boolAppmntDone" />
+      <Variable x:TypeArguments="x:String" Name="strDoctorEmailID" />
+      <Variable x:TypeArguments="s:String[]" Name="lstAttendees" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="Assign - hospital doctor sheet name" sap:VirtualizedContainerService.HintSize="1360.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strHospitalDeptFile]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[idictConfig("DataFolderPath").ToString + "\Output\Hospital Excel Files\" + iodictAppmntDetails("strHospital") + "\" + iodictAppmntDetails("strDepartment") + "-" + iodictAppmntDetails("strHospital")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Search for Excel File for corresponding hospital and doctor's sheet" sap:VirtualizedContainerService.HintSize="1360.6666666666667,1970.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[strHospitalDeptFile]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1326.6666666666667,1860.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtDoctorSheet]" DisplayName="Read from doctor's sheet" sap:VirtualizedContainerService.HintSize="1264.6666666666667,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[iodictAppmntDetails(&quot;strDoctorName&quot;)]" />
+            <Assign DisplayName="Assign bool slot available" sap:VirtualizedContainerService.HintSize="1264.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Boolean">[boolSlotAvailability]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Boolean">[cint(dtDoctorSheet.DefaultView.ToTable(true, iodictAppmntDetails("strAppointmentDate"))(dtDoctorSheet.DefaultView.ToTable(true, iodictAppmntDetails("strAppointmentDate")).RowCount -1)(0)) &gt; 0]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ExcelLookUpRange Range="{x:Null}" DisplayName="LookUp Date Cell Address" sap:VirtualizedContainerService.HintSize="1264.6666666666667,88" sap2010:WorkflowViewState.IdRef="ExcelLookUpRange_1" Result="[strCellAddress]" SheetName="[iodictAppmntDetails(&quot;strDoctorName&quot;)]" Value="[iodictAppmntDetails(&quot;strAppointmentDate&quot;)]" />
+            <Assign DisplayName="Assign - date column letter" sap:VirtualizedContainerService.HintSize="1264.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[strDateColumnLetter]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(strCellAddress, "\w+(?&lt;=\D)").ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Flowchart sap:VirtualizedContainerService.HintSize="1264.6666666666667,1272.6666666666667" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <av:Point x:Key="ShapeLocation">330,2.6666666666666643</av:Point>
+                  <av:Size x:Key="ShapeSize">60,74.66666666666667</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">360,77.33333333333334 360,96.66666666666666</av:PointCollection>
+                  <x:Double x:Key="Height">1235.3333333333335</x:Double>
+                  <x:Double x:Key="Width">1230.6666666666667</x:Double>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Flowchart.StartNode>
+                <x:Reference>__ReferenceID16</x:Reference>
+              </Flowchart.StartNode>
+              <FlowDecision x:Name="__ReferenceID16" Condition="[boolSlotAvailability]" DisplayName="IsSlotAvailable" sap:VirtualizedContainerService.HintSize="82,86.66666666666667" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <av:Point x:Key="ShapeLocation">318.6666666666667,96.66666666666666</av:Point>
+                    <av:Size x:Key="ShapeSize">82,86.66666666666667</av:Size>
+                    <av:PointCollection x:Key="TrueConnector">318.6666666666667,140 288.6666666666667,140 288.6666666666667,90 220,90</av:PointCollection>
+                    <av:PointCollection x:Key="FalseConnector">401.33333333333337,140 431.33333333333337,140 431.33333333333337,90 500,90</av:PointCollection>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <FlowDecision.True>
+                  <FlowStep x:Name="__ReferenceID6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <av:Point x:Key="ShapeLocation">20,63</av:Point>
+                        <av:Size x:Key="ShapeSize">200,53.333333333333336</av:Size>
+                        <av:PointCollection x:Key="ConnectorLocation">120,117 120,153</av:PointCollection>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ExcelLookUpRange Range="{x:Null}" DisplayName="LookUp for particular time slot" sap:VirtualizedContainerService.HintSize="200,53.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelLookUpRange_2" Result="[strTimeSlotAddress]" SheetName="[iodictAppmntDetails(&quot;strDoctorName&quot;)]" Value="[iodictAppmntDetails(&quot;strTimeSlot&quot;)]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:ExcelLookUpRange>
+                    <FlowStep.Next>
+                      <FlowStep x:Name="__ReferenceID7">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <av:Point x:Key="ShapeLocation">20,153</av:Point>
+                            <av:Size x:Key="ShapeSize">200,53.333333333333336</av:Size>
+                            <av:PointCollection x:Key="ConnectorLocation">220,180 250,180 250,236.66666666666669 336.83333333333337,236.66666666666669 336.83333333333337,266.6666666666667</av:PointCollection>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ExcelReadCell Cell="[strDateColumnLetter + strTimeSlotAddress(1)]" DisplayName="Read Cell for xpected timeslot" sap:VirtualizedContainerService.HintSize="200,53.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelReadCell_2" SheetName="[iodictAppmntDetails(&quot;strDoctorName&quot;)]">
+                          <ui:ExcelReadCell.Result>
+                            <OutArgument x:TypeArguments="ui:GenericValue">[genvarCellValue]</OutArgument>
+                          </ui:ExcelReadCell.Result>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:ExcelReadCell>
+                        <FlowStep.Next>
+                          <FlowDecision x:Name="__ReferenceID2" Condition="[string.IsNullOrEmpty(genvarCellValue)]" DisplayName="IsCurrentCellNull" sap:VirtualizedContainerService.HintSize="95.33333333333333,86.66666666666667" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <av:Point x:Key="ShapeLocation">313.6666666666667,266.6666666666667</av:Point>
+                                <av:Size x:Key="ShapeSize">95.33333333333333,86.66666666666667</av:Size>
+                                <av:PointCollection x:Key="TrueConnector">313.6666666666667,310 110,310 110,333</av:PointCollection>
+                                <av:PointCollection x:Key="FalseConnector">409,310 439.00000000000006,310 439.00000000000006,156.66666666666669 779.3333333333334,156.66666666666669 779.3333333333334,186.66666666666666</av:PointCollection>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <FlowDecision.True>
+                              <FlowStep x:Name="__ReferenceID3">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">10,333</av:Point>
+                                    <av:Size x:Key="ShapeSize">200,53.333333333333336</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">110,387 110,687.3333333333334 460,687.3333333333334 460,717.3333333333334</av:PointCollection>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:ExcelWriteCell Cell="[strDateColumnLetter + strTimeSlotAddress(1)]" DisplayName="Write MRN in Current Cell" sap:VirtualizedContainerService.HintSize="200,53.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[iodictAppmntDetails(&quot;strDoctorName&quot;)]" Text="[iodictAppmntDetails(&quot;strMRN&quot;)]">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:ExcelWriteCell>
+                                <FlowStep.Next>
+                                  <FlowStep x:Name="__ReferenceID0">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <av:Point x:Key="ShapeLocation">243,717.3333333333334</av:Point>
+                                        <av:Size x:Key="ShapeSize">434,84.66666666666667</av:Size>
+                                        <av:PointCollection x:Key="ConnectorLocation">460,802.6666666666667 460,857.3333333333334</av:PointCollection>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Assign DisplayName="Assign - StartDateTime" sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="s:DateTime">[dtimeStartDateTime]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="s:DateTime">[datetime.ParseExact(iodictAppmntDetails("strAppointmentDate") + " " + iodictAppmntDetails("strTimeSlot").Split("-")(0).Trim, "dd-MM-yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
+                                      </Assign.Value>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </Assign>
+                                    <FlowStep.Next>
+                                      <FlowStep x:Name="__ReferenceID10">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <av:Point x:Key="ShapeLocation">243,857.3333333333334</av:Point>
+                                            <av:Size x:Key="ShapeSize">434,84.66666666666667</av:Size>
+                                            <av:PointCollection x:Key="ConnectorLocation">460,942 460,968.3333333333334 477.99999999999994,968.3333333333334</av:PointCollection>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <Assign DisplayName="Assign - EndDateTime" sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="s:DateTime">[dtimeEndDateTime]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="s:DateTime">[datetime.ParseExact(iodictAppmntDetails("strAppointmentDate") + " " + iodictAppmntDetails("strTimeSlot").Split("-")(1).Trim, "dd-MM-yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
+                                          </Assign.Value>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </Assign>
+                                        <FlowStep.Next>
+                                          <FlowStep x:Name="__ReferenceID15">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <av:Point x:Key="ShapeLocation">350.66666666666663,968.3333333333334</av:Point>
+                                                <av:Size x:Key="ShapeSize">254.66666666666666,82.66666666666667</av:Size>
+                                                <av:PointCollection x:Key="ConnectorLocation">477.99999999999994,1050.3333333333335 477.99999999999994,1080.3333333333335 460,1080.3333333333335 460,1117.3333333333333</av:PointCollection>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <umab:GmailApplicationCard ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Account="appointment.springhill@gmail.com" DisplayName="Use Gmail" EmailAddress="appointment.springhill@gmail.com" sap:VirtualizedContainerService.HintSize="254.66666666666666,82.66666666666667" sap2010:WorkflowViewState.IdRef="GmailApplicationCard_2" Timeout="90" UseConnectionService="False">
+                                              <umab:GmailApplicationCard.Body>
+                                                <ActivityAction x:TypeArguments="um:IMailQuickHandle">
+                                                  <ActivityAction.Argument>
+                                                    <DelegateInArgument x:TypeArguments="um:IMailQuickHandle" Name="Gmail" />
+                                                  </ActivityAction.Argument>
+                                                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,726.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <Assign DisplayName="Assign - strDoctorEmailID" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_23">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="x:String">[strDoctorEmailID]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="x:String">[iodictAppmntDetails("strDoctorName").Split(" ")(0).Trim + "." + iodictAppmntDetails("strDoctorName").Split(" ")(1) + "@gmail.com"]</InArgument>
+                                                      </Assign.Value>
+                                                    </Assign>
+                                                    <Assign DisplayName="Assign - List of attendees" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_28">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="s:String[]">[lstAttendees]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="s:String[]">[{"sgupta5@myamu.ac.in", iodictAppmntDetails("strEmail")}]</InArgument>
+                                                      </Assign.Value>
+                                                    </Assign>
+                                                    <uga:CreateEventConnections Calendar="{x:Null}" ConnectionAccountName="{x:Null}" Location="{x:Null}" OptionalAttendees="{x:Null}" Recurrence="{x:Null}" ResourceAttendees="{x:Null}" Result="{x:Null}" AddConferenceData="False" AllDayEvent="False" BrowserCalendarFriendlyName="SpringHill Appointments" BrowserCalendarId="bba55d3b3fb95069548ee6e392c8b3ccaf603f9ef532e3586c163f72f5e939c2@group.calendar.google.com" CalendarInputMode="Browse" ConnectionId="5191778a-ace5-4237-9453-15d9c600e497" Description="[String.Format(&quot;&lt;P&gt;&lt;SPAN&gt;Dear {0},&#xA;You have an appointment with Doctor {1}.&#xA;Kindly check your email for appointment details and login username and one time password.&#xA;Regards,&#xA;SpringHill Healthcare&lt;/SPAN&gt;&lt;/P&gt;&quot;, iodictAppmntDetails(&quot;strPatientFirstName&quot;), iodictAppmntDetails(&quot;strDoctorName&quot;))]" DisplayName="Create Event - calendar event" EndDateTime="[dtimeEndDateTime]" GuestCanInviteOthers="True" GuestCanModifyEvent="False" GuestCanSeeAttendeesList="True" sap:VirtualizedContainerService.HintSize="434,365.3333333333333" sap2010:WorkflowViewState.IdRef="CreateEventConnections_1" PreferredReturnTimezone="UTC" RequiredAttendees="[lstAttendees]" SendNotification="ALL" ShowAs="Opaque" StartDateTime="[dtimeStartDateTime]" Timezone="Asia/Kolkata" Title="[&quot;Appointment with Dr. &quot; + iodictAppmntDetails(&quot;strDoctorName&quot;)]" UseConnectionService="True" Visibility="DEFAULT">
+                                                      <uga:CreateEventConnections.CalendarIdBackup>
+                                                        <usau:BackupSlot x:TypeArguments="ugace:ECalendarMode" StoredValue="Browse">
+                                                          <usau:BackupSlot.BackupValues>
+                                                            <scg:Dictionary x:TypeArguments="ugace:ECalendarMode, scg:List(x:Object)" />
+                                                          </usau:BackupSlot.BackupValues>
+                                                        </usau:BackupSlot>
+                                                      </uga:CreateEventConnections.CalendarIdBackup>
+                                                    </uga:CreateEventConnections>
+                                                  </Sequence>
+                                                </ActivityAction>
+                                              </umab:GmailApplicationCard.Body>
+                                              <umab:GmailApplicationCard.ClientId>
+                                                <InArgument x:TypeArguments="x:String">
+                                                  <Literal x:TypeArguments="x:String" Value="" />
+                                                </InArgument>
+                                              </umab:GmailApplicationCard.ClientId>
+                                              <umab:GmailApplicationCard.ClientSecret>
+                                                <InArgument x:TypeArguments="x:String">
+                                                  <Literal x:TypeArguments="x:String" Value="" />
+                                                </InArgument>
+                                              </umab:GmailApplicationCard.ClientSecret>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </umab:GmailApplicationCard>
+                                            <FlowStep.Next>
+                                              <FlowStep x:Name="__ReferenceID12">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <av:Point x:Key="ShapeLocation">243,1117.3333333333333</av:Point>
+                                                    <av:Size x:Key="ShapeSize">434,84.66666666666667</av:Size>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <Assign DisplayName="Update Appmnt Done bool" sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_21">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:Boolean">[boolAppmntDone]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                              </FlowStep>
+                                            </FlowStep.Next>
+                                          </FlowStep>
+                                        </FlowStep.Next>
+                                      </FlowStep>
+                                    </FlowStep.Next>
+                                  </FlowStep>
+                                </FlowStep.Next>
+                              </FlowStep>
+                            </FlowDecision.True>
+                            <FlowDecision.False>
+                              <FlowDecision x:Name="__ReferenceID13" Condition="[genvarCellValue.ToString.Equals(iodictAppmntDetails(&quot;strMRN&quot;))]" DisplayName="IsAppmnTExists" sap:VirtualizedContainerService.HintSize="88,86.66666666666667" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <av:Point x:Key="ShapeLocation">735.3333333333334,186.66666666666666</av:Point>
+                                    <av:Size x:Key="ShapeSize">88,86.66666666666667</av:Size>
+                                    <av:PointCollection x:Key="TrueConnector">735.3333333333334,230 705.3333333333334,230 705.3333333333334,240 670,240</av:PointCollection>
+                                    <av:PointCollection x:Key="FalseConnector">823.3333333333334,230 853.3333333333334,230 853.3333333333334,303 620,303 620,333</av:PointCollection>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <FlowDecision.True>
+                                  <FlowStep x:Name="__ReferenceID14">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <av:Point x:Key="ShapeLocation">470,197.66666666666666</av:Point>
+                                        <av:Size x:Key="ShapeSize">200,83.33333333333333</av:Size>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Sequence DisplayName="Appmnt Already Exists" sap:VirtualizedContainerService.HintSize="200,83.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log - Appointment already exists for this time slot" sap:VirtualizedContainerService.HintSize="434,143.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;Appointment already exists for MRN &quot; + iodictAppmntDetails(&quot;strMRN&quot;) +&quot; for date &quot; +  iodictAppmntDetails(&quot;strAppointmentDate&quot;) +&quot; and time slot &quot; + iodictAppmntDetails(&quot;strTimeSlot&quot;)]" />
+                                      <Assign DisplayName="Assign- appointment status" sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_22">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[iodictAppmntDetails("strAppointmentStatus")]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String" xml:space="preserve">["Failed: " + "Appointment already exists for MRN " + iodictAppmntDetails("strMRN") +" for date " +  iodictAppmntDetails("strAppointmentDate") +" and time slot " + iodictAppmntDetails("strTimeSlot")]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <Assign DisplayName="Assign Status Change DateTime" sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_27">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[iodictAppmntDetails("strStatusChangeDatetime")]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">[now.ToString]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <Assign DisplayName="Update Appmnt Done bool" sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_25">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Boolean">[boolAppmntDone]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="20 - Hospital Booking\20.c Add datatable Into Excel.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,114.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="20 - Hospital Booking\20.c Add datatable Into Excel.xaml">
+                                        <ui:InvokeWorkflowFile.Arguments>
+                                          <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="iodictAppmntDetails">[iodictAppmntDetails]</InOutArgument>
+                                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="idictConfig">[idictConfig]</InArgument>
+                                          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="iodtAppmntDetails">[iodtAppmntDetails]</InOutArgument>
+                                        </ui:InvokeWorkflowFile.Arguments>
+                                      </ui:InvokeWorkflowFile>
+                                      <Throw DisplayName="Throw BRE - Appointment already exists for this time slot" Exception="[new BusinessRuleException(&quot;Appointment already exists for MRN &quot; + iodictAppmntDetails(&quot;strMRN&quot;) +&quot; for date &quot; +  iodictAppmntDetails(&quot;strAppointmentDate&quot;) +&quot; and time slot &quot; + iodictAppmntDetails(&quot;strTimeSlot&quot;))]" sap:VirtualizedContainerService.HintSize="434,91.33333333333333" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                                    </Sequence>
+                                  </FlowStep>
+                                </FlowDecision.True>
+                                <FlowDecision.False>
+                                  <FlowStep x:Name="__ReferenceID1">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <av:Point x:Key="ShapeLocation">520,333</av:Point>
+                                        <av:Size x:Key="ShapeSize">200,53.333333333333336</av:Size>
+                                        <av:PointCollection x:Key="ConnectorLocation">620,386.3333333333333 620,416.3333333333333 621.3333333333333,416.3333333333333 621.3333333333333,416.6666666666667</av:PointCollection>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:ExcelReadCell Cell="[strDateColumnLetter + (intCount + 1).ToString]" DisplayName="Read Cell for that Date" sap:VirtualizedContainerService.HintSize="200,53.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="[iodictAppmntDetails(&quot;strDoctorName&quot;)]">
+                                      <ui:ExcelReadCell.Result>
+                                        <OutArgument x:TypeArguments="ui:GenericValue">[genvarCellValue]</OutArgument>
+                                      </ui:ExcelReadCell.Result>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:ExcelReadCell>
+                                    <FlowStep.Next>
+                                      <FlowDecision x:Name="__ReferenceID8" Condition="[string.IsNullOrEmpty(genvarCellValue)]" DisplayName="IsCurrentCellNull" sap:VirtualizedContainerService.HintSize="95.33333333333333,86.66666666666667" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <av:Point x:Key="ShapeLocation">573.6666666666666,416.6666666666667</av:Point>
+                                            <av:Size x:Key="ShapeSize">95.33333333333333,86.66666666666667</av:Size>
+                                            <av:PointCollection x:Key="TrueConnector">573.6666666666666,460 410,460 410,483</av:PointCollection>
+                                            <av:PointCollection x:Key="FalseConnector">669,460 980,460 980,507.33333333333337</av:PointCollection>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <FlowDecision.True>
+                                          <FlowStep x:Name="__ReferenceID9">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <av:Point x:Key="ShapeLocation">310,483</av:Point>
+                                                <av:Size x:Key="ShapeSize">200,53.333333333333336</av:Size>
+                                                <av:PointCollection x:Key="ConnectorLocation">410,537 410,567.6666666666666</av:PointCollection>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:ExcelWriteCell Cell="[strDateColumnLetter + (intCount + 1).ToString]" DisplayName="Write MRN in Current Cell" sap:VirtualizedContainerService.HintSize="200,53.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="[iodictAppmntDetails(&quot;strDoctorName&quot;)]" Text="[iodictAppmntDetails(&quot;strMRN&quot;)]">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </ui:ExcelWriteCell>
+                                            <FlowStep.Next>
+                                              <FlowStep x:Name="__ReferenceID11">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <av:Point x:Key="ShapeLocation">310,567.6666666666666</av:Point>
+                                                    <av:Size x:Key="ShapeSize">200,83.33333333333333</av:Size>
+                                                    <av:PointCollection x:Key="ConnectorLocation">310,610 213,610 213,760 243,760</av:PointCollection>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <Sequence DisplayName="Assign strTimeSlot to available Time Slot" sap:VirtualizedContainerService.HintSize="200,83.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <Switch x:TypeArguments="x:Int32" DisplayName="Set time slot acc to availability" Expression="[intCount]" sap:VirtualizedContainerService.HintSize="496.6666666666667,441.3333333333333" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                                                    <Assign x:Key="1" DisplayName="Assign- strTimeSlot" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_11">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="x:String">[iodictAppmntDetails("strTimeSlot")]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="x:String">10:00-10:30</InArgument>
+                                                      </Assign.Value>
+                                                    </Assign>
+                                                    <Assign x:Key="2" DisplayName="Assign- strTimeSlot" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="x:String">[iodictAppmntDetails("strTimeSlot")]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="x:String">10:30-11:00</InArgument>
+                                                      </Assign.Value>
+                                                    </Assign>
+                                                    <Assign x:Key="3" DisplayName="Assign- strTimeSlot" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="x:String">[iodictAppmntDetails("strTimeSlot")]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="x:String">11:00-11:30</InArgument>
+                                                      </Assign.Value>
+                                                    </Assign>
+                                                    <Assign x:Key="4" DisplayName="Assign- strTimeSlot" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="x:String">[iodictAppmntDetails("strTimeSlot")]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="x:String">11:30-12:00</InArgument>
+                                                      </Assign.Value>
+                                                    </Assign>
+                                                    <Assign x:Key="5" DisplayName="Assign- strTimeSlot" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_15">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="x:String">[iodictAppmntDetails("strTimeSlot")]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="x:String">12:00-12:30</InArgument>
+                                                      </Assign.Value>
+                                                    </Assign>
+                                                    <Assign x:Key="6" DisplayName="Assign- strTimeSlot" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="x:String">[iodictAppmntDetails("strTimeSlot")]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="x:String">12:30-13:00</InArgument>
+                                                      </Assign.Value>
+                                                    </Assign>
+                                                    <Assign x:Key="7" DisplayName="Assign- strTimeSlot" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_17">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="x:String">[iodictAppmntDetails("strTimeSlot")]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="x:String">13:00-13:30</InArgument>
+                                                      </Assign.Value>
+                                                    </Assign>
+                                                    <Assign x:Key="8" DisplayName="Assign- strTimeSlot" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="x:String">[iodictAppmntDetails("strTimeSlot")]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="x:String">13:30-14:00</InArgument>
+                                                      </Assign.Value>
+                                                    </Assign>
+                                                  </Switch>
+                                                </Sequence>
+                                                <FlowStep.Next>
+                                                  <x:Reference>__ReferenceID0</x:Reference>
+                                                </FlowStep.Next>
+                                              </FlowStep>
+                                            </FlowStep.Next>
+                                          </FlowStep>
+                                        </FlowDecision.True>
+                                        <FlowDecision.False>
+                                          <FlowStep x:Name="__ReferenceID4">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <av:Point x:Key="ShapeLocation">763,507.33333333333337</av:Point>
+                                                <av:Size x:Key="ShapeSize">434,84.66666666666667</av:Size>
+                                                <av:PointCollection x:Key="ConnectorLocation">763,550 733,550 733,360 720,360</av:PointCollection>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <Assign DisplayName="Update Count Value" sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                              <Assign.To>
+                                                <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                              </Assign.To>
+                                              <Assign.Value>
+                                                <InArgument x:TypeArguments="x:Int32">[intCount + 1]</InArgument>
+                                              </Assign.Value>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </Assign>
+                                            <FlowStep.Next>
+                                              <x:Reference>__ReferenceID1</x:Reference>
+                                            </FlowStep.Next>
+                                          </FlowStep>
+                                        </FlowDecision.False>
+                                      </FlowDecision>
+                                    </FlowStep.Next>
+                                  </FlowStep>
+                                </FlowDecision.False>
+                              </FlowDecision>
+                            </FlowDecision.False>
+                          </FlowDecision>
+                        </FlowStep.Next>
+                      </FlowStep>
+                    </FlowStep.Next>
+                  </FlowStep>
+                </FlowDecision.True>
+                <FlowDecision.False>
+                  <FlowStep x:Name="__ReferenceID5">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <av:Point x:Key="ShapeLocation">500,47.66666666666666</av:Point>
+                        <av:Size x:Key="ShapeSize">200,83.33333333333333</av:Size>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Sequence DisplayName="No Slot Available" sap:VirtualizedContainerService.HintSize="200,83.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log - No Slot Available" sap:VirtualizedContainerService.HintSize="434,143.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[string.Format(&quot;No slot available for appointment date {0} for patient {1} having Medical Record Number {3} \n Kindly process this mail manually as requested.&quot;, iodictAppmntDetails(&quot;strAppointmentDate&quot;), iodictAppmntDetails(&quot;strPatientFirstName&quot;), iodictAppmntDetails(&quot;strMRN&quot;))]" />
+                      <Assign DisplayName="Update Appointment Status" sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_6">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[iodictAppmntDetails("strAppointmentStatus")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">["Failed: " + "No slot available for this date. Moved to manual folder. "]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign DisplayName="Assign Status Change DateTime" sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_26">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[iodictAppmntDetails("strStatusChangeDatetime")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[now.ToString]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign DisplayName="Update Appmnt Done bool" sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_20">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[boolAppmntDone]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="20 - Hospital Booking\20.c Add datatable Into Excel.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,114.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="20 - Hospital Booking\20.c Add datatable Into Excel.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="iodictAppmntDetails">[iodictAppmntDetails]</InOutArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="idictConfig">[idictConfig]</InArgument>
+                          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="iodtAppmntDetails">[iodtAppmntDetails]</InOutArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                      <Throw DisplayName="Throw BRE for no slot available" Exception="[new BusinessRuleException(&quot;No slot available for date:  &quot; + iodictAppmntDetails(&quot;strAppointmentDate&quot;))]" sap:VirtualizedContainerService.HintSize="434,91.33333333333333" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                    </Sequence>
+                  </FlowStep>
+                </FlowDecision.False>
+              </FlowDecision>
+              <x:Reference>__ReferenceID1</x:Reference>
+              <x:Reference>__ReferenceID2</x:Reference>
+              <x:Reference>__ReferenceID3</x:Reference>
+              <x:Reference>__ReferenceID4</x:Reference>
+              <x:Reference>__ReferenceID5</x:Reference>
+              <x:Reference>__ReferenceID6</x:Reference>
+              <x:Reference>__ReferenceID7</x:Reference>
+              <x:Reference>__ReferenceID8</x:Reference>
+              <x:Reference>__ReferenceID9</x:Reference>
+              <x:Reference>__ReferenceID0</x:Reference>
+              <x:Reference>__ReferenceID10</x:Reference>
+              <x:Reference>__ReferenceID11</x:Reference>
+              <x:Reference>__ReferenceID12</x:Reference>
+              <x:Reference>__ReferenceID13</x:Reference>
+              <x:Reference>__ReferenceID14</x:Reference>
+              <x:Reference>__ReferenceID15</x:Reference>
+            </Flowchart>
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
+    <If Condition="[boolAppmntDone]" sap:VirtualizedContainerService.HintSize="1360.6666666666667,3066.6666666666665" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="579.3333333333334,2883.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="strMailBodyTemplate" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log G Calendar Event Created" sap:VirtualizedContainerService.HintSize="537.3333333333334,143.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Appointment Reminder created on Google Calendar for &quot; + iodictAppmntDetails(&quot;strPatientFirstName&quot;) + &quot; date &quot; +iodictAppmntDetails(&quot;strAppointmentDate&quot;)  + &quot; timeslot &quot; + iodictAppmntDetails(&quot;strTimeSlot&quot;)]" />
+          <uca:KeyedHashText Encoding="{x:Null}" Key="{x:Null}" KeySecureString="{x:Null}" Algorithm="SHA256" ContinueOnError="False" DisplayName="Hash Text - SSN &amp; MRN" sap:VirtualizedContainerService.HintSize="537.3333333333334,142.66666666666666" sap2010:WorkflowViewState.IdRef="KeyedHashText_1" Input="[iodictAppmntDetails(&quot;strMRN&quot;) + iodictAppmntDetails(&quot;strSSN&quot;)]" KeyEncodingString="65001" KeyInputModeSwitch="Key" Result="[iodictAppmntDetails(&quot;strHash&quot;)]" />
+          <ui:ReadTextFile File="{x:Null}" Content="[strMailBodyTemplate]" DisplayName="Read Mail Template File" FileName="[idictConfig(&quot;MailTemplatePath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="537.3333333333334,81.33333333333333" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+          <Assign DisplayName="Replace user details" sap:VirtualizedContainerService.HintSize="537.3333333333334,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_24">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strMailBodyTemplate]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[strMailBodyTemplate.Replace("{{HASH}}", iodictAppmntDetails("strHash")).Replace("{{PATIENTNAME}}",iodictAppmntDetails("strPatientFirstName")).Replace("{{DOCTORNAME}}", iodictAppmntDetails("strDoctorName")).Replace("{{APPOINTMENTDATE}}", iodictAppmntDetails("strAppointmentDate")).Replace("{{TIMESLOT}}", iodictAppmntDetails("strTimeSlot")).Replace("{{PATIENTEMAIL}}", iodictAppmntDetails("strEmail"))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <umab:GmailApplicationCard ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Account="appointment.springhill@gmail.com" DisplayName="Use Gmail to Send Emails to patient" EmailAddress="appointment.springhill@gmail.com" sap:VirtualizedContainerService.HintSize="537.3333333333334,993.3333333333334" sap2010:WorkflowViewState.IdRef="GmailApplicationCard_3" Timeout="90" UseConnectionService="False">
+            <umab:GmailApplicationCard.Body>
+              <ActivityAction x:TypeArguments="um:IMailQuickHandle">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="um:IMailQuickHandle" Name="Gmail" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,807.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uga:SendEmailConnections ArgumentAttachments="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" AttachmentInputMode="UseExisting" Body="[strMailBodyTemplate]" ConnectionId="5191778a-ace5-4237-9453-15d9c600e497" DisplayName="Send Email to patient" sap:VirtualizedContainerService.HintSize="388,513.3333333333334" sap2010:WorkflowViewState.IdRef="SendEmailConnections_1" Importance="Normal" SaveAsDraft="False" Subject="[&quot;Appointment reservation on date &quot; + iodictAppmntDetails(&quot;strAppointmentDate&quot;) + &quot; for time slot &quot; + iodictAppmntDetails(&quot;strTimeSlot&quot;)]" To="[{&quot;sgupta5@myamu.ac.in&quot;}]" UseConnectionService="True">
+                    <uga:SendEmailConnections.Attachments>
+                      <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)" />
+                    </uga:SendEmailConnections.Attachments>
+                    <uga:SendEmailConnections.AttachmentsBackup>
+                      <usau:BackupSlot x:TypeArguments="ugage:AttachmentInputMode" StoredValue="UseExisting">
+                        <usau:BackupSlot.BackupValues>
+                          <scg:Dictionary x:TypeArguments="ugage:AttachmentInputMode, scg:List(x:Object)" />
+                        </usau:BackupSlot.BackupValues>
+                      </usau:BackupSlot>
+                    </uga:SendEmailConnections.AttachmentsBackup>
+                  </uga:SendEmailConnections>
+                  <ui:LogMessage DisplayName="Log - Mail sent to patient" sap:VirtualizedContainerService.HintSize="388,143.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Mail sent to patient &quot; + iodictAppmntDetails(&quot;strPatientFirstName&quot;) + &quot; date &quot; +iodictAppmntDetails(&quot;strAppointmentDate&quot;)  + &quot; timeslot &quot; + iodictAppmntDetails(&quot;strTimeSlot&quot;)]" />
+                </Sequence>
+              </ActivityAction>
+            </umab:GmailApplicationCard.Body>
+            <umab:GmailApplicationCard.ClientId>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </umab:GmailApplicationCard.ClientId>
+            <umab:GmailApplicationCard.ClientSecret>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </umab:GmailApplicationCard.ClientSecret>
+          </umab:GmailApplicationCard>
+          <Sequence DisplayName="Reservation Successfully booked" sap:VirtualizedContainerService.HintSize="537.3333333333334,474.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_22">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Update Appointment Status" sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_29">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[iodictAppmntDetails("strAppointmentStatus")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["Processed: " + "Slot booked. Moved to processed folder "]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign Status Change DateTime" sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_30">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[iodictAppmntDetails("strStatusChangeDatetime")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[now.ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="20 - Hospital Booking\20.c Add datatable Into Excel.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,114.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="20 - Hospital Booking\20.c Add datatable Into Excel.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="iodictAppmntDetails">[iodictAppmntDetails]</InOutArgument>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="idictConfig">[idictConfig]</InArgument>
+                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="iodtAppmntDetails">[iodtAppmntDetails]</InOutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+          </Sequence>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="537.3333333333334,636" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="500.6666666666667,556" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch sap2010:Annotation.AnnotationText="Connect with mongodb database&#xA;Enter the data from datatable to the database" DisplayName="Try Catch for database" sap:VirtualizedContainerService.HintSize="438.6666666666667,445.3333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch.Try>
+                    <ui:InvokeCode ContinueOnError="{x:Null}" Code="// Connect the database&#xA;var Client = new MongoClient(&quot;mongodb://localhost:27017&quot;);&#xA;var dbList =Client.ListDatabases().ToList();&#xA;// get the test database&#xA;var db = Client.GetDatabase(&quot;RadissonHotel&quot;);&#xA;// gets a collection named &quot;foo&quot; using a BsonDocument&#xA;var collectionC = db.GetCollection&lt;BsonDocument&gt;(istrHotel);&#xA;        // Convert the idtInfoTable to an array of BsonDocuments&#xA;        BsonDocument[] dataArray = new BsonDocument[idtInfoTable.Rows.Count];&#xA;        for (int i = 0; i &lt; idtInfoTable.Rows.Count; i++)&#xA;        {&#xA;            BsonDocument documentt = new BsonDocument();&#xA;            foreach (System.Data.DataColumn col in idtInfoTable.Columns)&#xA;            {&#xA;                documentt.Add(col.ColumnName, BsonValue.Create(idtInfoTable.Rows[i][col]));&#xA;            }&#xA;            dataArray[i] = documentt;&#xA;        }&#xA;&#xA;        // Insert the array of data into the collection&#xA;        collectionC.InsertMany(dataArray);&#xA;" DisplayName="Invoke Code- for DB" sap:VirtualizedContainerService.HintSize="334,165.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeCode_3" Language="CSharp">
+                      <ui:InvokeCode.Arguments>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="idtInfoTable">[idtLogFileSheet]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="istrHotel">[istrHotelName]</InArgument>
+                      </ui:InvokeCode.Arguments>
+                    </ui:InvokeCode>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404.6666666666667,21.333333333333332" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,143.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[exception.InnerException.Message]" />
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+              </Sequence>
+            </ui:CommentOut.Body>
+          </ui:CommentOut>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="300,80.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+  </Sequence>
+</Activity>
